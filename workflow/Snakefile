@@ -1,0 +1,66 @@
+configfile: "config.yaml"
+include: "NGS.smk"
+include: "ONT.smk"
+include: "PAC.smk"
+include: "SNP.smk"
+include: "DownSample.smk"
+include: "Statistics.smk"
+
+ALL_SAMPLES = ["NGS_5h", "NGS_5k", "ONT_5h", "ONT_5k", "PAC_5h", "PAC_5k"]
+NGS_SAMPLES = ["NGS_5h", "NGS_5k", "NGS_5h_2", "NGS_5k_2"]
+ONT_SAMPLES = ["ONT_5h", "ONT_5k"]
+PAC_SAMPLES = ["PAC_5h", "PAC_5k"]
+TGS_SAMPLES = ["ONT_5h", "ONT_5k", "PAC_5h", "PAC_5k"]
+TGS_5h = ["ONT_5h", "PAC_5h"]
+SNP_SAMPLES = ["C57", "DBA2"]
+cell_num = {
+  "NGS_5h": 500, "NGS_5k": 5000, "NGS_5h_2": 500, "NGS_5k_2": 5000, 
+  "ONT_5h": 500, "ONT_5k": 5000, 
+  "PAC_5h": 500, "PAC_5k": 5000, 
+}
+
+rule all:
+  input:
+    # expand("NGS/01.cellranger/{sample}/outs/possorted_genome_bam.bam", sample=NGS_SAMPLES),
+    # expand("ONT/01.pychopper/{sample}.full_length_with_primer.fq", sample=ONT_SAMPLES),
+    # expand("ONT/01.extract/{sample}.full_length.fq", sample=ONT_SAMPLES),
+    # expand("ONT/02.map_reads/{sample}.sorted.bam", sample=ONT_SAMPLES),
+    # expand("PAC/02.map_reads/{sample}.sorted.bam", sample=PAC_SAMPLES),
+    # expand("NGS/03.correct_barcode/{sample}.barcode_corrected.bam", sample=NGS_SAMPLES),
+    expand("ONT/03.correct_barcode/{sample}.barcode_corrected.bam", sample=ONT_SAMPLES),
+    expand("PAC/03.correct_barcode/{sample}.barcode_corrected.bam", sample=PAC_SAMPLES),
+    # expand("ONT/04.gffcompare/{sample}.filter.tmap", sample=ONT_SAMPLES),
+    # expand("PAC/04.gffcompare/{sample}.filter.tmap", sample=PAC_SAMPLES),
+    # expand("ONT/04.IsoQuant/{sample}/OUT/OUT.read_assignments.tsv", sample=ONT_SAMPLES),
+    # expand("PAC/04.IsoQuant/{sample}/OUT/OUT.read_assignments.tsv", sample=PAC_SAMPLES),
+    # expand("ONT/05.merge_isoquant/{sample}.isoquant.bam", sample=ONT_SAMPLES),
+    # expand("PAC/05.merge_isoquant/{sample}.isoquant.bam", sample=PAC_SAMPLES),
+    # expand("ONT/06.correct_umi/{sample}.UMI_corrected.bam", sample=ONT_SAMPLES),
+    # expand("PAC/06.correct_umi/{sample}.UMI_corrected.bam", sample=PAC_SAMPLES),
+    expand("ONT/06.correct_umi/{sample}.dedup.bam", sample=ONT_SAMPLES),
+    expand("PAC/06.correct_umi/{sample}.dedup.bam", sample=PAC_SAMPLES),
+    expand("ONT/07.matrix/{sample}.transcript.filtered.h5ad", sample=ONT_SAMPLES),
+    expand("PAC/07.matrix/{sample}.transcript.filtered.h5ad", sample=PAC_SAMPLES),
+    expand("ONT/08.snp/{sample}.vcf.gz", sample=ONT_SAMPLES),
+    expand("PAC/08.snp/{sample}.vcf.gz", sample=PAC_SAMPLES),
+    expand("ONT/08.snp/{sample}.gene_snps.vcf", sample=ONT_SAMPLES),
+    expand("PAC/08.snp/{sample}.gene_snps.vcf", sample=PAC_SAMPLES),
+    expand("ONT/09.snp_classify/{sample}.classified_reads.bam", sample=ONT_SAMPLES),
+    expand("PAC/09.snp_classify/{sample}.classified_reads.bam", sample=PAC_SAMPLES),
+    expand("ONT/10.read_assignments/{sample}.read_assignments.tsv", sample=ONT_SAMPLES),
+    expand("PAC/10.read_assignments/{sample}.read_assignments.tsv", sample=PAC_SAMPLES),
+    expand("ONT/10.read_assignments/{sample}.count.txt", sample=ONT_SAMPLES),
+    expand("PAC/10.read_assignments/{sample}.count.txt", sample=PAC_SAMPLES),
+    expand("Downsample/01.downsample/{sample}.sample_0.1.bam", sample=TGS_5h),
+    expand("Downsample/02.matrix/{sample}.gene.filtered.h5ad", sample=TGS_5h),
+    # Statistics
+    expand("Statistics/00.quality_control/{sample}.raw.record_info.txt", sample=TGS_SAMPLES),
+    expand("Statistics/01.cDNA/{sample}.cDNA.record_info.txt", sample=TGS_SAMPLES),
+    expand("Statistics/02.bam_flagstat/{sample}.flagstat", sample=ALL_SAMPLES),
+    # expand("Statistics/05.barcode_dist/{sample}.barcode_min_dist_num.tsv", sample=TGS_SAMPLES),
+    # SNPs
+    # expand("SNP/01.fastp/{sample}.R1.fq.gz", sample=SNP_SAMPLES),
+    # expand("SNP/02.bwa/{sample}.bam", sample=SNP_SAMPLES),
+    expand("SNP/03.snp/{sample}.filtered_{type}_final.vcf", sample=SNP_SAMPLES, type=['snps', 'indels']),
+    expand("SNP/04.homozygous_snps/{sample}.homozygous_snps.vcf", sample=SNP_SAMPLES),
+    expand("SNP/05.gene_snps/{sample}.gene_snps.vcf", sample=SNP_SAMPLES),

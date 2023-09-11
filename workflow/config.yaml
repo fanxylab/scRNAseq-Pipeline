@@ -1,0 +1,47 @@
+# conda
+py: /datf/enzedeng/mambaforge/envs/sc/bin/python
+bt: /datf/enzedeng/mambaforge/envs/sc/bin/bcftools
+st: /datf/enzedeng/mambaforge/envs/sc/bin/samtools
+sb: /datf/enzedeng/mambaforge/envs/sc/bin/sambamba
+pc: /datf/enzedeng/mambaforge/envs/sc/bin/pychopper
+gc: /datf/enzedeng/mambaforge/envs/sc/bin/gffcompare
+bg: /datf/enzedeng/mambaforge/envs/sc/bin/spliced_bam2gff
+fp: /datf/enzedeng/mambaforge/envs/sc/bin/fastp
+sc: /datf/enzedeng/mambaforge/envs/sc/bin/starcode
+lb: /datf/enzedeng/mambaforge/envs/pac/bin/longbow
+bwa: /datf/enzedeng/mambaforge/envs/sc/bin/bwa
+gatk: /datf/enzedeng/mambaforge/envs/sc/bin/gatk
+
+# software
+mm2: /datd/enzedeng/software/minimap2-2.24_x64-linux/minimap2
+cr: /datd/enzedeng/software/cellranger-7.0.1/bin/cellranger
+iq: /datd/enzedeng/software/GitHub/IsoQuant/isoquant.py
+sg: /share/home/share/software/singularity/bin/singularity
+dv: /datf/enzedeng/data/Lung/docker/deepvariant.simg
+
+# ref
+bwa_ref: /datf/enzedeng/mapping_db/bwa/GRCm39/GRCm39.primary_assembly.genome.fa
+mm2_ref: /datf/enzedeng/mapping_db/minimap2/mm39/GRCm39_splice.mmi
+mm2_ref_dir: /datf/enzedeng/mapping_db/minimap2/mm39
+mm2_ref_file: GRCm39.primary_assembly.genome.fa
+cr_ref: /datf/enzedeng/database/cellranger/GRCm39_GENCODE_M30_build/GRCm39
+cr_gtf: /datf/enzedeng/database/cellranger/GRCm39_GENCODE_M30_build/reference_sources/gencode.vM30.primary_assembly.annotation.gtf
+cr_gfa: /datf/enzedeng/database/cellranger/GRCm39_GENCODE_M30_build/reference_sources/GRCm39.primary_assembly.genome.fa
+gdb: SNP/genecode.vM30.db
+wbcl: /datd/enzedeng/data/Lung/code/p20.barcode/3M-february-2018.txt
+
+# user script
+raw_length_quals: /datf/enzedeng/data/Lung/scripts/raw_length_quals.py
+refine_segment_P5: /datf/enzedeng/data/Lung/scripts/PacBio.refine_segment_P5.py
+find_polyT: /datf/enzedeng/data/Lung/scripts/ONT.find_polyT.py
+pac_corrector: /datf/enzedeng/data/Lung/scripts/PacBio.CBC_UMI_corrector.py
+correct_barcodes: /datf/enzedeng/data/Lung/scripts/correct_barcodes.py
+correct_UMI: /datf/enzedeng/data/Lung/scripts/correct_UMI.py
+merge_isoquant_to_bam: /datf/enzedeng/data/Lung/scripts/merge_isoquant_to_bam.py
+extract_snps_in_genes: /datf/enzedeng/data/Lung/scripts/extract_snps_in_genes.py
+create_count_matrix: /datf/enzedeng/data/Lung/scripts/create_count_matrix.py
+deduplicate: /datf/enzedeng/data/Lung/scripts/deduplicate.py
+classify_reads: /datf/enzedeng/data/Lung/scripts/classify_allele_specific_reads.py
+barcode_med: /datf/enzedeng/data/Lung/scripts/barcode_min_edit_distance.py
+dedup_IsoQuant: /datf/enzedeng/data/Lung/scripts/dedup_IsoQuant.py
+novel_transcript: /datf/enzedeng/data/Lung/scripts/novel_transcript_cell_num.py
