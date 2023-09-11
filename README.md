@@ -6,7 +6,7 @@ The rapid development of next-generation sequencing (NGS)-based single-cell RNA 
 
 ## Authors
 
-Enze Deng<sup>1,2,*</sup>, Qingmei Shen<sup>2,*</sup>, Jingna Zhang<sup>2</sup>, Yaowei Fang<sup>2</sup>, Lei Chang<sup>2</sup>, Guanzheng Luo<sup>1</sup>, Xiaoying Fan<sup>2,†</sup>
+Enze Deng<sup>1,2,\*</sup>, Qingmei Shen<sup>2,\*</sup>, Jingna Zhang<sup>2</sup>, Yaowei Fang<sup>2</sup>, Lei Chang<sup>2</sup>, Guanzheng Luo<sup>1</sup>, Xiaoying Fan<sup>2,†</sup>
 
 1. MOE Key Laboratory of Gene Function and Regulation, Guangdong Province Key Laboratory of Pharmaceutical Functional Genes, State Key Laboratory of Biocontrol, School of Life Sciences, Sun Yat-sen University, Guangzhou 510275, China.
 2. GMU-GIBH Joint School of Life Sciences, The Fifth Affiliated Hospital of Guangzhou Medical University, Guangzhou National Laboratory, Guangzhou Medical University, Guangzhou 510005, China, 
@@ -16,7 +16,7 @@ Enze Deng<sup>1,2,*</sup>, Qingmei Shen<sup>2,*</sup>, Jingna Zhang<sup>2</sup>,
 
 ## Data
 
-- All sequencing data used for this study is publicly available on National Genomics Data Center under the accession token PRJCA019416.
+- All sequencing data used for this study is publicly available on [National Genomics Data Center](https://ngdc.cncb.ac.cn/) under the accession token [PRJCA019416](https://ngdc.cncb.ac.cn/bioproject/browse/PRJCA019416).
 
 ## Code
 
